@@ -28,3 +28,6 @@ public class Solution {
         
 	}
 }
+
+// TS: O(N2)
+// SC: (N2)
