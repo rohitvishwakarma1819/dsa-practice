@@ -18,3 +18,6 @@ class Solution {
         return dp[r][c];
     }
 }
+
+// T-> O(N X M)
+// S -> O(N X M)
