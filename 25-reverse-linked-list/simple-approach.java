@@ -23,3 +23,5 @@ class Solution {
         return head;
     }
 }
+// T-> O(N)
+// S-> O(1)
