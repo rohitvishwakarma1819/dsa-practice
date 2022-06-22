@@ -1,13 +1,18 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        Stack<Integer> stack = new Stack<>();
+        int ans=0;
+        int count=0;
         for(int num:nums){
-            if(stack.empty() || stack.peek()==num){
-                stack.push(num);
+            if(count>0){
+                if(num==ans)
+                    count++;
+                else
+                    count--;
             }else{
-                stack.pop();
+                ans=num;
+                count=1;
             }
         }
-        return stack.pop();
+        return ans;
     }
 }

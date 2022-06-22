@@ -28,4 +28,4 @@ public class Solution {
 }
 
 // T.C. -> O(2(N*M)) ~> O(N2)
-// S.C. -> (N+M) ~> O(N)
+// S.C. -> O(N+M) ~> O(N)
