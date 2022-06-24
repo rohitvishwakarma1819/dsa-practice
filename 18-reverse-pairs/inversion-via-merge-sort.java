@@ -30,9 +30,6 @@ class Solution {
             if(arr[i]<=arr[j]){
                 marr[k++]=arr[i++];
             }else{
-                // if(arr[i]>(2*arr[j])){
-                //     pairs+=m-i;
-                // }
                 marr[k++]=arr[j++];
             }
         }
