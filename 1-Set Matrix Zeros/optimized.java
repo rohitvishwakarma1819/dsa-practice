@@ -4,7 +4,6 @@ public class Solution {
     public static void setZeros(int[][] matrix) {
         int r = matrix.length;
         int c = matrix[0].length;
-        boolean origin = matrix[0][0]==0;
         boolean firstRow = false;
         boolean firstCol = false;
         
@@ -34,10 +33,10 @@ public class Solution {
         
         
             for(int i=0;i<r;++i)
-                if(origin || firstCol)
+                if(firstCol)
                 matrix[i][0]=0;
             for(int i=0;i<c;++i)
-                if(origin || firstRow)
+                if(firstRow)
                 matrix[0][i]=0;
         
     }
