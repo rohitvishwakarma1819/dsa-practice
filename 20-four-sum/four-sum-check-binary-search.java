@@ -8,7 +8,6 @@ public class Solution {
           for(int j=i+1;j<=(n-3);++j){
               for(int k=j+1;k<=(n-2);++k){
                   int sum = target-nums[i]-nums[j]-nums[k];
-//                   int remaining = target-sum;
                   if(binSearch(nums,k+1,nums.length-1,sum)){
                       return "Yes";
                   }

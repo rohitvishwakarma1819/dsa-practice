@@ -25,4 +25,4 @@ class Solution {
 }
 
 // TS -> O(N)+O(N)
-// SC -> O(1)
+// SC -> O(1) for this question atleast 
