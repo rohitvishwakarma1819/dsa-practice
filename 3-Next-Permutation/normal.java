@@ -1,44 +1,104 @@
-import java.util.* ;
-import java.io.*; 
-import java.util.ArrayList;
-import java.util.Collections;
-
-public class Solution 
-{
-	public static ArrayList<Integer> nextPermutation(ArrayList<Integer> permutation) 
-	{
-		// Write your code here.
-        int size = permutation.size();
-        int j = size-1;
-        int i = j-1;
-        boolean found = false;
-        for(int x = i;x>=0;--x){
-            if(permutation.get(x)<permutation.get(j)){
-                found = true;
-                i=x;
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int n=nums.length;
+        int i;
+        for(i=n-2;i>=0;--i){
+            if(nums[i]<nums[i+1]){
                 break;
-            }else{
-                j=x;
             }
-//             i=x;
-        }if(!found){
-             Collections.sort(permutation);
-            return permutation;
-        }else{
-            for(int h = size-1;j>=0;--h){
-                if(permutation.get(i)<permutation.get(h)){
-                    int t = permutation.get(i);
-                permutation.set(i,permutation.get(h));
-            permutation.set(h,t);
-            Collections.sort(permutation.subList(i+1,size));
-                    break;
-                }
-            }
-            
         }
-        return permutation;
-	}
+        if(i==-1){
+             reverse(nums,0,n-1);
+            return;
+        }
+        for(int j=n-1;j>=0;--j){
+            if(nums[i]<nums[j]){
+                nums[i] = nums[i]^nums[j];
+                nums[j] = nums[i]^nums[j];
+                nums[i] = nums[i]^nums[j];
+                reverse(nums,i+1,n-1);
+                return;
+            }
+        }
+    }
+    
+    public void reverse(int[] arr, int start,int end){
+        while(start<end){
+            int temp=arr[start];
+            arr[start++]=arr[end];
+            arr[end--]=temp;
+        }
+    }
 }
+// T-> O(N)
+// S->O(1)
 
-// T.C. O(nlogn)
-// S.C. O(1)
+
+
+
+/*
+    1,1,2
+    1,2,1
+    2,1,1
+    
+    1,1,2,3
+    1,1,3,2
+    1,2,1,3
+    1,2,3,1
+    1,3,1,2
+    1,3,2,1
+    
+    2,1,1,3
+    2,1,3,1
+    2,3,1,1
+    
+    3,1,1,2
+    
+
+    1,2,3
+    1,3,2
+    2,1,3
+    2,3,1
+    3,1,2
+    3,2,1
+    1,2,3
+    
+    
+    1,2,3,4
+    1,2,4,3
+    1,3,2,4
+    1,3,4,2
+    1,4,2,3
+    1,4,3,2
+    2,1,3,4
+    2,1,4,3
+    2,3,1,4
+    2,3,4,1
+    2,4,1,3
+    2,4,3,1
+    3,1,2,4
+    3,1,4,2
+    3,2,1,4
+    3,2,4,1
+    3,4,1,2
+    3,4,2,1
+    4,1,2,3
+    4,1,3,2
+    4,2,1,3
+    4,2,3,1
+    4,3,1,2
+    4,3,2,1
+    
+
+    Intuition is that eg: 1, 3, 4, 2
+    =>         4
+             3   2
+           1     
+           then it is easily observable that elemets from rtl increases first and then decreses 
+           so we need to find the first breaking and swap the element that just breaks the order ex 3 
+           here with the element just greater to it on right eg: 4 here.
+            so it will be[ 1 4 3 2]
+            Then reverse  the remaining element becuase that will give us the smallest number just 
+            greater than previous permutation
+
+*/
