@@ -29,3 +29,5 @@ class Solution {
         return combinations;
     }
 }
+// T -> O(2^N) worst case
+// S -> O(N)

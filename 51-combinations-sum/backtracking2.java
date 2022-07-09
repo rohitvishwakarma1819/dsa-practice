@@ -32,3 +32,5 @@ public class Solution
         }
     }
 }
+// T -> O(2^N) worst case
+// S -> O(N)
