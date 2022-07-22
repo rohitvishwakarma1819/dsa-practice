@@ -3,8 +3,7 @@ class Solution {
         if(n==0)
             return 1.0;
         long nn=n;
-        if(n<0)
-            nn*=-1;
+        nn = Math.abs(n);
         double ans=1.0;
         while(nn>0){
             if(nn%2==0){
