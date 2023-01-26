@@ -1,0 +1,57 @@
+public class Solution {
+
+	public static int zAlgorithm(String s, String p, int n, int m) {
+        if(m > n) return 0;
+        int si = 0;
+        int pi = 0;
+        
+        int[] prefixLen = calcPrefixLen(p);
+        int count = 0;
+        
+        while(si < n) {
+            if(s.charAt(si) == p.charAt(pi)) {
+                si++;
+                pi++;
+                
+                if(pi == m) {
+                    count++;
+                    pi = prefixLen[pi];
+                }
+            }else {
+                pi = prefixLen[pi];
+                if(pi < 0) {
+                   si++;
+                   pi++;
+                }
+            }
+        }
+        return count;
+	}
+    
+    public static int[] calcPrefixLen(String s) {
+        int patternLen = s.length();
+        int[] arr = new int[patternLen + 1];
+        arr[0] = -1;
+        arr[1] = 0;
+        
+        int prefixLength = 0;
+        int i = 1;
+        
+        while(i < patternLen) {
+            if(s.charAt(prefixLength) == s.charAt(i)) {
+                prefixLength++;
+                i++;
+                arr[i] = prefixLength;
+            }else if(prefixLength > 0) {
+                prefixLength = arr[prefixLength];
+            }else {
+                i++;
+                arr[i] = 0;
+            }
+        }
+        
+        return arr;
+    }
+}
+// O(N)
+// O(M)
