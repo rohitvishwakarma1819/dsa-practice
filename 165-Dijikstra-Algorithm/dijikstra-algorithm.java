@@ -87,3 +87,6 @@ class Solution {
         return dis;
     }
 }
+
+// T -> O(N^2)
+// S -> O(N^2)
